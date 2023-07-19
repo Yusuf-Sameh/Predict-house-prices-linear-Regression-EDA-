@@ -16,12 +16,18 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 st.sidebar.title('Choose a Part of the Project')
 option = st.sidebar.selectbox(
     'Choose a part',
-    ('* Test the Model', '* Full Notebook with Output', 'Basic Libraries & Data' ,'EDA', 'Data Preprocessing', 'Preparing Data & Modeling'))
+    ('About', '* Test the Model', '* Full Notebook with Output', '1- Basic Libraries & Data' ,'2- EDA', '3- Data Preprocessing', '4- Preparing Data & Modeling'))
 
 ##################################################################################################################################
 
 df_train = pd.read_csv('train.csv')
 df_test = pd.read_csv('test.csv')
+
+##################################################################################################################################
+
+if option == 'About':
+    st.write('This Data App & Project \n\nBy: Youssef Sameh\n\nIn: July 2023\n\ncontact: youssefpasha49@gmail.com')
+    st.divider()
 
 ##################################################################################################################################
 if option == '* Test the Model':
