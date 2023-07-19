@@ -16,7 +16,7 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 st.sidebar.title('Choose a Part of the Project')
 option = st.sidebar.selectbox(
     'Choose a part',
-    ('About', '* Test the Model', '* Full Notebook with Output', '1- Basic Libraries & Data' ,'2- EDA', '3- Data Preprocessing', '4- Preparing Data & Modeling'))
+    ('About', '* Test the Model', '* Full Notebook with Output', '1- Data Description', '2- Basic Libraries & Data' ,'3- EDA', '4- Data Preprocessing', '5- Preparing Data & Modeling'))
 
 ##################################################################################################################################
 
@@ -28,6 +28,15 @@ df_test = pd.read_csv('test.csv')
 if option == 'About':
     st.write('This Data App & Project \n\nBy: Youssef Sameh\n\nIn: July 2023\n\ncontact: youssefpasha49@gmail.com')
     st.divider()
+    st.write("""
+             The House Prices - Advanced Regression Techniques project is an open-source challenge offered by Kaggle for machine learning and data analysis. The goal of this challenge is to develop a predictive model that estimates house prices based on a set of variables. The data for this project was collected from home sales in Ames, Iowa in the United States, and includes a mixture of numerical and categorical variables that describe the properties for sale.
+""")
+    st.write("""
+             The project includes two datasets, a training set with 1460 samples and a test set with 1459 samples. Kaggle projects typically involve challenges that require participants to use their data analysis and machine learning skills to solve a specific problem, and model performance is evaluated using the root mean squared error (RMSE) metric to assess model accuracy.
+""")
+    st.write("""
+             In this project, participants are required to build a predictive model that estimates house prices using the provided training data, and then use this model to predict house prices in the test set. Model performance is evaluated using the RMSE metric based on the difference between the actual prices and the predicted values. The goal of the project is to improve the ability to predict house prices and develop an accurate and efficient model that can be used in real estate analysis and decision-making.
+""")
 
 ##################################################################################################################################
 if option == '* Test the Model':
@@ -245,9 +254,16 @@ elif option == '* Full Notebook with Output':
     html = """<iframe src="https://www.kaggle.com/embed/youssefspasha/predict-house-prices-linear-regression-eda?kernelSessionId=96854216" height="800" style="margin: 0 auto; width: 100%; max-width: 950px;" frameborder="0" scrolling="auto" title="Predict house prices-linear Regression-EDA "></iframe>"""
     st.markdown(html, unsafe_allow_html=True)
 
+##################################################################################################################################
 
+elif option == '1- Data Description':
+    with open('data_description.txt', 'r') as file:
+        text = file.read()
+    st.text(text)
+    
+##################################################################################################################################
 
-elif option == 'Basic Libraries & Data':
+elif option == '2- Basic Libraries & Data':
     st.header('Basic Libraries & Data')
     st.subheader('Import Basic Libraries')
     st.code("""
@@ -272,7 +288,9 @@ elif option == 'Basic Libraries & Data':
                 
                 - There are columns we may not need.''')
 
-elif option == 'EDA':
+##################################################################################################################################
+
+elif option == '3- EDA':
     st.header('Exploratory Data Analysis')
     st.code('''
             # Check if all variables in both data (train, test) are identical except for the response variable ('SalePrice')
@@ -408,8 +426,9 @@ elif option == 'EDA':
     st.code('df_train.columns', language='python')
     st.code('df_test.columns', language='python')
 
+##################################################################################################################################
 
-elif option == 'Data Preprocessing':
+elif option == '4- Data Preprocessing':
     st.header('Data Preprocessing')
     st.header('Data Cleaning')
     st.subheader('1. deleting duplicate values')
@@ -545,7 +564,9 @@ elif option == 'Data Preprocessing':
     st.code('df_train.info()', language='python')
     st.code('df_test.info()', language='python')
 
-elif option == 'Preparing Data & Modeling':
+##################################################################################################################################
+
+elif option == '4- Preparing Data & Modeling':
     st.header('Preparing Data & Modeling')
     st.header('Build Linear Regression Model')
     st.subheader('Splitting the data into training and test sets ')
